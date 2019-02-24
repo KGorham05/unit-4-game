@@ -15,7 +15,8 @@
 // When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
 // The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
 
-
+// check if the game is winnable: 
+// take target score and divide it by largest crystal value check for whole integer === winnable if not take remainder and compare to remaining crystal values 
 
 // Each crystal should have a random hidden value between 1 - 12.
 
@@ -30,12 +31,14 @@ var crystalGame = {
     targetScore: 0,
     runningScore: 0,
     yourPick: 0,
-    crystalOneVal: Math.floor((Math.random() * 12) + 1),
-    crystalTwoVal: Math.floor((Math.random() * 12) + 1),
-    crystalThreeVal: Math.floor((Math.random() * 12) + 1),
-    crystalFourVal: Math.floor((Math.random() * 12) + 1),
+    crystalOneVal: 0,
+    crystalTwoVal: 0,
+    crystalThreeVal: 0,
+    crystalFourVal: 0,
     runningScoreText: document.querySelector("#running-score-text"),
     targetScoreText: document.querySelector("#target-score-text"),
+    winsText: document.querySelector("#wins-text"),
+    lossesText: document.querySelector("#losses-text"),
 
     // setupGame method is called when page first loads
     setupGame: function () {
@@ -47,6 +50,15 @@ var crystalGame = {
         // reset runningScore
         this.runningScore = 0;
         this.runningScoreText.innerHTML = this.runningScore;
+        // update wins and losses text
+        this.winsText.innerHTML = "Wins: " + this.wins;
+        this.lossesText.innerHTML = "Losses: " + this.losses;
+        // generate values for crystals
+        this.crystalOneVal = Math.floor((Math.random() * 12) + 1);
+        this.crystalTwoVal = Math.floor((Math.random() * 12) + 1);
+        this.crystalThreeVal = Math.floor((Math.random() * 12) + 1);
+        this.crystalFourVal = Math.floor((Math.random() * 12) + 1);
+        console.log("Crystal Values " + this.crystalOneVal + " " + this.crystalTwoVal + " " + this.crystalThreeVal + " " + this.crystalFourVal);
     },
 
     // This function runs whenever the user clicks a crystal
@@ -56,26 +68,34 @@ var crystalGame = {
         // check and see if runningScore = targetScore
         if (this.runningScore === this.targetScore) {
             alert("You win!");
-            wins++;
-            // reset game variables - create a new function for this
+            this.wins++;
+            this.setupGame();
         } else if (this.runningScore > this.targetScore) {
             alert("Oh no! You lost!");
-            losses++;
-            // reset game variables (keep wins and losses)
-        }
-        
-        // if not check for runningScore > targetscore
-        // if so losses++; reset game variables
+            this.losses++;
+            this.setupGame();
+        } else {
+            crystalGame.runningScoreText.innerHTML = crystalGame.runningScore;
+        };
+
+
     },
 
 
     // end of crystalGame function
 };
 
+// when hovering over crystals, changer cursor to pointer and add a border
+$('.crystal-choice').css('cursor', 'pointer');
+$('.crystal-choice').hover(function () {
+    $(this).css('border-style', 'dotted');
+}, function () {
+    $(this).css('border-style', 'none');
+});
+
 $(".crystal-choice").on("click", function () {
     // depending on which crystal is clicked
     crystalGame.yourPick = parseInt(this.id);
-    console.log("your pick: " + crystalGame.yourPick);
     // if crystal 1 is picked
     if (crystalGame.yourPick === 1) {
         // add value of crystal 1 to runningScore
