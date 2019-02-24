@@ -36,7 +36,7 @@ var crystalGame = {
     crystalFourVal: Math.floor((Math.random() * 12) + 1),
     runningScoreText: document.querySelector("#running-score-text"),
     targetScoreText: document.querySelector("#target-score-text"),
-    
+
     // setupGame method is called when page first loads
     setupGame: function () {
         // computer generates a target score between 19 and 120
@@ -50,12 +50,21 @@ var crystalGame = {
     },
 
     // This function runs whenever the user clicks a crystal
-    updatePage: function() {
-    // add value of crystal selected to runningScore
-    // update value of running score on the screen 
-    // check and see if runningScore = targetScore
-        // if so wins++; reset game variables
-    // if not check for runningScore > targetscore
+    updatePage: function () {
+        // update value of running score on the screen 
+        crystalGame.runningScoreText.innerHTML = crystalGame.runningScore;
+        // check and see if runningScore = targetScore
+        if (this.runningScore === this.targetScore) {
+            alert("You win!");
+            wins++;
+            // reset game variables - create a new function for this
+        } else if (this.runningScore > this.targetScore) {
+            alert("Oh no! You lost!");
+            losses++;
+            // reset game variables (keep wins and losses)
+        }
+        
+        // if not check for runningScore > targetscore
         // if so losses++; reset game variables
     },
 
@@ -63,16 +72,28 @@ var crystalGame = {
     // end of crystalGame function
 };
 
-$(".crystal-choice").on("click", function() {
+$(".crystal-choice").on("click", function () {
     // depending on which crystal is clicked
     crystalGame.yourPick = parseInt(this.id);
     console.log("your pick: " + crystalGame.yourPick);
+    // if crystal 1 is picked
     if (crystalGame.yourPick === 1) {
-      // add value of crystal to runningScore
-    runningScore += crystalOneVal;   
-    // update scoreboard 
-    }
-   
+        // add value of crystal 1 to runningScore
+        crystalGame.runningScore += crystalGame.crystalOneVal;
+        // update scoreboard 
+        crystalGame.updatePage();
+    } else if (crystalGame.yourPick === 2) {
+        crystalGame.runningScore += crystalGame.crystalTwoVal;
+        crystalGame.updatePage();
+    } else if (crystalGame.yourPick === 3) {
+        crystalGame.runningScore += crystalGame.crystalThreeVal;
+        crystalGame.updatePage();
+    } else {
+        crystalGame.runningScore += crystalGame.crystalFourVal;
+        crystalGame.updatePage();
+    };
+
+
 });
 
 console.log(crystalGame.crystalOneVal);
