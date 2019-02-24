@@ -1,0 +1,25 @@
+body {
+    background-color: lightblue;
+    /* background-image: url(/assets/images/crystal-background.jpg); */
+}
+
+header {
+    background-color:#e7eff6;
+    font-family: 'Poiret One', cursive;
+}
+
+#game-rules {
+    background-color:#e7eff6;
+    font-family: 'Poiret One', cursive;
+    font-weight: bold; 
+    font-size: 18px;
+       
+}
+
+#scoreboard { 
+    background-color:#e7eff6;
+    font-family: 'Poiret One', cursive;
+    font-weight: bold; 
+    font-size: 18px;
+   
+}

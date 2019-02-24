@@ -116,10 +116,6 @@ $(".crystal-choice").on("click", function () {
 
 });
 
-console.log(crystalGame.crystalOneVal);
-console.log(crystalGame.crystalTwoVal);
-console.log(crystalGame.crystalThreeVal);
-console.log(crystalGame.crystalFourVal);
 crystalGame.setupGame();
 
 
