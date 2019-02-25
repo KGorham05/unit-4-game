@@ -9,27 +9,26 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
 
     <title>Crystal Conundrum</title>
 
@@ -50,38 +49,47 @@
     <!-- Second Row -->
     <div class="container">
         <div class="row">
-            <div class="col-md-6 text-center" id="game-rules">
-                <p>You will be given a random target score at the start of the game.</p>
-                <p>There are four crystals below. Clicking on a crystal will add a specific amount of points to your
-                    total score.</p>
-                <p>The value of each crystal is hidden, but you can deduce their values by watching your total score
-                    change.</p>
-                <p>Each time when the game starts, the game will change the values of each crystal.</p>
+            <div class="col-md-6 text-center">
+                <div id="game-rules">
+                    <p>You will be given a random target score at the start of the game.</p>
+                    <p>There are four crystals below. Clicking on a crystal will add a specific amount of points to your
+                        total score.</p>
+                    <p>The value of each crystal is hidden, but you can deduce their values by watching your total score
+                        change.</p>
+                    <p>Each time when the game starts, the game will change the values of each crystal.</p>
+                </div>
             </div>
-            <div class="col-md-6 align-items-center">
-                <div class="row" id="scoreboard">
-                    <div class="col-md-6 text-center">
-                        <p id="wins-text">Wins: 0</p>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="scoreboard">
+                            <p class="text-center" id="wins-text">Wins: 0</p>
+                        </div>
                     </div>
                     <div class="col-md-6 text-center">
-                        <p id="losses-text">Losses: 0</p>
+                        <div class="scoreboard">
+                            <p class="text-center align-middle" id="losses-text">Losses: 0</p>
+                        </div>
+
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 text-center" id="target-score">
-                        <p>Target Score</p>
-                        <p id="target-score-text">0</p>
+                    <div class="col-md-12 text-center align-middle">
+                        <div id="target-score">
+                            <p>Target Score</p>
+                            <h1 id="target-score-text">0</h1>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 text-center" id="running-score">
-                        <p>Your total score is: </p>
-                        <p id="running-score-text">0</p>
+                    <div class="col-md-12 text-center">
+                        <div id="running-score">
+                            <p>Your total score is: </p>
+                            <h1 id="running-score-text">0</h1>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
@@ -104,7 +112,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Running Score Box -->
     <div class="container">
         <div class="row">

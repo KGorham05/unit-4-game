@@ -4,24 +4,40 @@
 
 body {
     background-color: lightblue;
-    background-image: url(../images/crystal-background.jpg);
+    background-image: url(../images/blue-triangles.jpg);
+}
+
+h1 {
+ font-weight:900;
 }
 
 header {
-    background-color:#e7eff6;
+    background-color:#2a4d69;
+    color: #e7eff6; 
     font-family: 'Poiret One', cursive;
     padding:  15px;
     margin-bottom: 20px;
+    border: 5px solid #adcbe3;
+    border-radius: 10px;
+}
+
+p {
+    padding: 5px;
+    margin-top: 12px;
 }
 
 
-#game-rules, #scoreboard, #target-score, #running-score {
-    background-color:#e7eff6;
+#game-rules, .scoreboard, #target-score, #running-score {
+    background-color:#adcbe3;
+    color: #2a4d69;
     font-family: 'Poiret One', cursive;
     font-weight: bold; 
     font-size: 18px;
-    padding: 10px;
+    padding: 0px;
     margin: 0px;
+    border: 5px solid #2a4d69; 
+    border-radius: 10px;
+    margin: 5px;
     
        
 }
