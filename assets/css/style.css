@@ -1,25 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: lightblue;
-    /* background-image: url(/assets/images/crystal-background.jpg); */
+    background-image: url(../images/crystal-background.jpg);
 }
 
 header {
     background-color:#e7eff6;
     font-family: 'Poiret One', cursive;
+    padding:  15px;
+    margin-bottom: 20px;
 }
 
-#game-rules {
+
+#game-rules, #scoreboard, #target-score, #running-score {
     background-color:#e7eff6;
     font-family: 'Poiret One', cursive;
     font-weight: bold; 
     font-size: 18px;
+    padding: 10px;
+    margin: 0px;
+    
        
 }
 
-#scoreboard { 
-    background-color:#e7eff6;
-    font-family: 'Poiret One', cursive;
-    font-weight: bold; 
-    font-size: 18px;
-   
-}
+/* #target-score, #running-score {
+    margin-left: 15px;
+    
+} */
