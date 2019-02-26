@@ -1,26 +1,11 @@
-// There will be four crystals displayed as buttons on the page.
-
-// The player will be shown a random number at the start of the game.
-
-// When the player clicks on a crystal, it will add a specific amount of points to the player's total score.
-
-// Your game will hide this amount until the player clicks a crystal.
-// When they do click one, update the player's score counter.
-// The player wins if their total score matches the random number from the beginning of the game.
-
-// The player loses if their score goes above the random number.
-
-// The game restarts whenever the player wins or loses.
-
-// When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
 // The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
 
 // check if the game is winnable: 
 // take target score and divide it by largest crystal value check for whole integer === winnable if not take remainder and compare to remaining crystal values 
-
-// Each crystal should have a random hidden value between 1 - 12.
-
-
+var $runningScore = $("#running-score-text");
+var $targetScore = $("#target-score-text");
+var $wins = $("#wins-text");
+var $losses = $("#losses-text");
 
 // Create a giant object that will house our logic and variables
 var crystalGame = {
@@ -35,10 +20,12 @@ var crystalGame = {
     crystalTwoVal: 0,
     crystalThreeVal: 0,
     crystalFourVal: 0,
-    runningScoreText: document.querySelector("#running-score-text"),
-    targetScoreText: document.querySelector("#target-score-text"),
-    winsText: document.querySelector("#wins-text"),
-    lossesText: document.querySelector("#losses-text"),
+   
+    // Generate a value 1-12 for use by crystals
+    randomCrystalVal: function () {
+        return Math.floor((Math.random() * 12) + 1);
+    },
+
 
     // setupGame method is called when page first loads
     setupGame: function () {
@@ -46,36 +33,37 @@ var crystalGame = {
         this.targetScore = Math.floor((Math.random() * 101) + 19);
         console.log("target score =" + this.targetScore);
         // diplay targetScore on screen
-        this.targetScoreText.innerHTML = this.targetScore;
+        $targetScore.html(this.targetScore);
         // reset runningScore
         this.runningScore = 0;
-        this.runningScoreText.innerHTML = this.runningScore;
+        $runningScore.html(this.runningScore);
         // update wins and losses text
-        this.winsText.innerHTML = "Wins: " + this.wins;
-        this.lossesText.innerHTML = "Losses: " + this.losses;
+        $wins.html("Wins: " + this.wins); 
+        $losses.html("Losses: " + this.losses);
         // generate values for crystals
-        this.crystalOneVal = Math.floor((Math.random() * 12) + 1);
-        this.crystalTwoVal = Math.floor((Math.random() * 12) + 1);
-        this.crystalThreeVal = Math.floor((Math.random() * 12) + 1);
-        this.crystalFourVal = Math.floor((Math.random() * 12) + 1);
+        this.crystalOneVal = this.randomCrystalVal();
+        this.crystalTwoVal = this.randomCrystalVal();
+        this.crystalThreeVal = this.randomCrystalVal();
+        this.crystalFourVal = this.randomCrystalVal();
         console.log("Crystal Values " + this.crystalOneVal + " " + this.crystalTwoVal + " " + this.crystalThreeVal + " " + this.crystalFourVal);
     },
 
     // This function runs whenever the user clicks a crystal
     updatePage: function () {
         // update value of running score on the screen 
-        crystalGame.runningScoreText.innerHTML = crystalGame.runningScore;
+        $runningScore.html(crystalGame.runningScore);
         // check and see if runningScore = targetScore
         if (this.runningScore === this.targetScore) {
             alert("You win!");
             this.wins++;
             this.setupGame();
+            // check for loss condition 
         } else if (this.runningScore > this.targetScore) {
             alert("Oh no! You lost!");
             this.losses++;
             this.setupGame();
         } else {
-            crystalGame.runningScoreText.innerHTML = crystalGame.runningScore;
+            $runningScore.html(crystalGame.runningScore);
         };
 
 
